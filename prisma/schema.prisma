@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String             @id @default(uuid())
+  email        String             @unique
+  phone        String             @unique
+  passwordHash String             @map("password_hash")
+  fullName     String             @map("full_name")
+  pinCode      String?            @map("pin_code")
+  isActive     Boolean            @default(true) @map("is_active")
+  createdAt    DateTime           @default(now()) @map("created_at")
+  updatedAt    DateTime           @updatedAt @map("updated_at")
+  deletedAt    DateTime?          @map("deleted_at")
+  drunkModes   DrunkModeSession[]
+  safeContacts SafeContact[]
+  sessions     Session[]
+
+  @@index([email])
+  @@index([phone])
+  @@map("users")
+}
+
+model Session {
+  id             String   @id @default(uuid())
+  userId         String   @map("user_id")
+  refreshToken   String   @unique @map("refresh_token")
+  expiresAt      DateTime @map("expires_at")
+  userAgent      String?  @map("user_agent")
+  ipAddress      String?  @map("ip_address")
+  isRevoked      Boolean  @default(false) @map("is_revoked")
+  lastActivityAt DateTime @default(now()) @map("last_activity_at")
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([refreshToken])
+  @@map("sessions")
+}
+
+model DrunkModeSession {
+  id               String    @id @default(uuid())
+  userId           String    @map("user_id")
+  activatedAt      DateTime  @default(now()) @map("activated_at")
+  deactivatedAt    DateTime? @map("deactivated_at")
+  activationType   String    @default("manual") @map("activation_type")
+  deactivationType String?   @map("deactivation_type")
+  isActive         Boolean   @default(true) @map("is_active")
+  metadata         Json?     @default("{}")
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isActive])
+  @@index([activatedAt])
+  @@map("drunk_mode_sessions")
+}
+
+model SafeContact {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  name      String
+  phone     String
+  email     String?
+  priority  Int      @default(0)
+  isEnabled Boolean  @default(true) @map("is_enabled")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, phone])
+  @@index([userId, priority])
+  @@map("safe_contacts")
+}
