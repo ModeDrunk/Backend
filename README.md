@@ -225,5 +225,3 @@ npm run test:e2e
 # Cobertura de código
 npm run test:cov
 ```
-
----
