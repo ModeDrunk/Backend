@@ -1,8 +1,8 @@
-# SafeNight Backend
+# Drunk-Mode Backend
 
 ## Descripción
 
-El backend de la aplicación **SafeNight** para la gestión del "Modo Borracho". Este servicio está diseñado para proporcionar una API robusta y segura para la funcionalidad de seguridad ciudadana, permitiendo a los usuarios gestionar contactos de confianza y activar un modo de emergencia.
+El backend de la aplicación **Drunk-Mode** para la gestión del "Modo Borracho". Este servicio está diseñado para proporcionar una API robusta y segura para la funcionalidad de seguridad ciudadana, permitiendo a los usuarios gestionar contactos de confianza y activar un modo de emergencia.
 
 ## 🚀 Tecnologías Utilizadas
 
@@ -102,8 +102,8 @@ El backend de la aplicación **SafeNight** para la gestión del "Modo Borracho".
 ### **1. Clonar el repositorio**
 
 ```bash
-git clone https://tu-repositorio.com/safenight-backend.git
-cd safenight-backend
+git clone https://tu-repositorio.com/Drunk-Mode-backend.git
+cd Drunk-Mode-backend
 ```
 
 ### **2. Instalar las dependencias**
@@ -125,7 +125,7 @@ Crea un archivo `.env` en la raíz del proyecto basándote en `.env.example` (si
 PORT=3000
 
 # URL de conexión a la base de datos PostgreSQL
-DATABASE_URL="postgresql://usuario:contraseña@localhost:5432/safenight_db?schema=public"
+DATABASE_URL="postgresql://usuario:contraseña@localhost:5432/Drunk-Mode_db?schema=public"
 
 # Clave secreta para firmar los JWT
 JWT_SECRET="clave_super_secreta_y_segura"
@@ -136,7 +136,7 @@ REFRESH_TOKEN_SECRET="otra_clave_secreta"
 REFRESH_TOKEN_EXPIRATION="30d"
 ```
 
-> **Importante:** Reemplaza `usuario`, `contraseña` y `safenight_db` con tus credenciales reales.
+> **Importante:** Reemplaza `usuario`, `contraseña` y `Drunk-Mode_db` con tus credenciales reales.
 
 ### **4. Levantar la base de datos (Opcional con Docker)**
 
