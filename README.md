@@ -227,19 +227,3 @@ npm run test:cov
 ```
 
 ---
-
-## 🤝 Cómo Contribuir
-
-1.  Realiza un fork del proyecto.
-2.  Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
-3.  Realiza los cambios y haz commit de los mismos (`git commit -m 'Add: nueva funcionalidad'`).
-4.  Sube los cambios a tu repositorio (`git push origin feature/nueva-funcionalidad`).
-5.  Abre un Pull Request.
-
-### **Notas adicionales para los desarrolladores:**
-
-*   **Seguridad:** Nunca subas el archivo `.env` a tu repositorio. Asegúrate de que esté en el `.gitignore`.
-*   **Prisma:** Cuando modifiques `schema.prisma`, no olvides ejecutar `npx prisma generate` y crear una nueva migración con `npx prisma migrate dev --name nombre_de_la_migracion`.
-*   **Dependencias:** Revisa que `package.json` incluya todas las dependencias utilizadas en la estructura (`@nestjs/jwt`, `@nestjs/passport`, `passport-jwt`, `@prisma/client`, `bcrypt`, `class-validator`, etc.).
-EOF
-```
