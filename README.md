@@ -236,14 +236,6 @@ npm run test:cov
 4.  Sube los cambios a tu repositorio (`git push origin feature/nueva-funcionalidad`).
 5.  Abre un Pull Request.
 
----
-
-## 📜 Licencia
-
-[MIT](LICENSE)
-
----
-
 ### **Notas adicionales para los desarrolladores:**
 
 *   **Seguridad:** Nunca subas el archivo `.env` a tu repositorio. Asegúrate de que esté en el `.gitignore`.
