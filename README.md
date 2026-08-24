@@ -1,98 +1,257 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Project setup
+Aquí tienes el contenido completo del README en un formato listo para copiar y pegar directamente en tu archivo `README.md`:
 
 ```bash
-$ pnpm install
-```
+cat > README.md << 'EOF'
+# SafeNight Backend
 
-## Compile and run the project
+## Descripción
 
-```bash
-# development
-$ pnpm run start
+El backend de la aplicación **SafeNight** para la gestión del "Modo Borracho". Este servicio está diseñado para proporcionar una API robusta y segura para la funcionalidad de seguridad ciudadana, permitiendo a los usuarios gestionar contactos de confianza y activar un modo de emergencia.
 
-# watch mode
-$ pnpm run start:dev
+## 🚀 Tecnologías Utilizadas
 
-# production mode
-$ pnpm run start:prod
-```
+*   **[NestJS](https://nestjs.com/):** Framework principal para la construcción de la API, proporcionando una arquitectura escalable y modular.
+*   **[Prisma](https://www.prisma.io/):** ORM (Object-Relational Mapping) moderno para la interacción segura y tipada con la base de datos.
+*   **[PostgreSQL](https://www.postgresql.org/):** Sistema de base de datos relacional. (Asumido por la configuración de Prisma).
+*   **[JWT (JSON Web Tokens)](https://jwt.io/):** Utilizado para la autenticación y autorización de los usuarios.
+*   **[TypeScript](https://www.typescriptlang.org/):** Lenguaje que proporciona tipado estático y mejoras en el código.
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## 📁 Estructura del Proyecto
 
 ```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
+├── dist/                      # Código compilado (NO MODIFICAR)
+├── node_modules/              # Dependencias del proyecto
+├── prisma/
+│   ├── migrations/            # Control de versiones de la base de datos
+│   │   └── 20260519215910_init/
+│   │       └── migration.sql  # Esquema SQL inicial
+│   ├── schema.prisma          # Definición del modelo de datos y conexión
+│   ├── seed.ts                # Script para poblar la base de datos con datos iniciales
+│   └── migration_lock.toml    # Archivo de bloqueo de migraciones
+├── src/
+│   ├── auth/                  # Módulo de autenticación
+│   │   ├── dto/               # Objetos de Transferencia de Datos (login, registro, refresh)
+│   │   ├── strategies/        # Estrategias de Passport (JWT)
+│   │   ├── auth.controller.ts # Controlador de rutas de autenticación
+│   │   ├── auth.module.ts     # Módulo de autenticación
+│   │   └── auth.service.ts    # Lógica de negocio para autenticación
+│   ├── common/                # Recursos comunes y reutilizables
+│   │   ├── decorators/        # Decoradores personalizados (ej. @Public)
+│   │   ├── guards/            # Guards para proteger rutas (ej. JwtAuthGuard)
+│   │   └── utils/             # Utilidades varias
+│   ├── drunk-mode/            # Módulo principal de la funcionalidad "Modo Borracho"
+│   │   ├── dto/               # DTOs para activar/desactivar el modo
+│   │   ├── drunk-mode.controller.ts # Rutas para el Modo Borracho
+│   │   ├── drunk-mode.module.ts     # Módulo del Modo Borracho
+│   │   └── drunk-mode.service.ts    # Lógica de negocio del Modo Borracho
+│   ├── prisma/                # Módulo de Prisma para inyección de dependencias
+│   │   ├── prisma.module.ts   # Módulo de Prisma
+│   │   └── prisma.service.ts  # Servicio para gestionar la conexión a la BD
+│   ├── safe-contacts/         # Módulo para gestionar contactos de confianza
+│   │   ├── dto/               # DTOs para crear/actualizar contactos
+│   │   ├── safe-contacts.controller.ts # Rutas de contactos seguros
+│   │   ├── safe-contacts.module.ts     # Módulo de contactos seguros
+│   │   └── safe-contacts.service.ts    # Lógica de negocio de contactos
+│   ├── app.controller.ts      # Controlador principal (ej. ruta raíz)
+│   ├── app.module.ts          # Módulo raíz de la aplicación
+│   ├── app.service.ts         # Servicio principal de la aplicación
+│   └── main.ts                # Punto de entrada de la aplicación
+├── test/                      # Pruebas E2E
+│   ├── app.e2e-spec.ts
+│   └── jest-e2e.json
+├── .env                       # Variables de entorno (Base de datos, JWT, puerto)
+├── .gitignore
+├── .prettierrc                # Configuración de Prettier
+├── docker-compose.yml         # Configuración para levantar servicios en contenedores
+├── eslint.config.mjs          # Configuración de ESLint
+├── nest-cli.json              # Configuración del CLI de NestJS
+├── package.json               # Dependencias y scripts del proyecto
+├── tsconfig.build.json        # Configuración de TypeScript para la compilación
+└── tsconfig.json              # Configuración base de TypeScript
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+## ✨ Funcionalidades Principales
 
-Check out a few resources that may come in handy when working with NestJS:
+*   **Autenticación y Registro:**
+    *   Registro de nuevos usuarios con validación de datos.
+    *   Inicio de sesión seguro con generación de JWT.
+    *   Renovación de tokens de acceso mediante un `refresh token`.
+*   **Gestión de Contactos Seguros (`safe-contacts`):**
+    *   Crear, listar, actualizar y eliminar contactos de confianza.
+    *   Cada contacto almacena información como nombre, número de teléfono y relación.
+*   **Modo Borracho (`drunk-mode`):**
+    *   **Activar/Desactivar:** Endpoint para que el usuario active o desactive el modo de emergencia.
+    *   **(Asumido) Notificaciones a Contactos:** Cuando se activa, el sistema envía una alerta a los contactos registrados (esta lógica se implementaría en el servicio).
+*   **Seguridad:**
+    *   Rutas protegidas mediante Guards de JWT.
+    *   Uso de DTOs para validar y tipar los datos entrantes.
+*   **Base de Datos:**
+    *   Gestión de migraciones con Prisma para un esquema de BD versionado.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+---
 
-## Support
+## 🛠️ Configuración y Ejecución
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### **Prerrequisitos**
 
-## Stay in touch
+*   Node.js (versión 18 o superior)
+*   npm, yarn o pnpm
+*   Docker (Opcional, para levantar la base de datos)
+*   PostgreSQL (Instalado localmente o vía Docker)
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### **1. Clonar el repositorio**
 
-## License
+```bash
+git clone https://tu-repositorio.com/safenight-backend.git
+cd safenight-backend
+```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+### **2. Instalar las dependencias**
+
+```bash
+npm install
+# o
+yarn install
+# o
+pnpm install
+```
+
+### **3. Configurar las variables de entorno**
+
+Crea un archivo `.env` en la raíz del proyecto basándote en `.env.example` (si existe) o con la siguiente configuración mínima:
+
+```env
+# Puerto en el que correrá la aplicación
+PORT=3000
+
+# URL de conexión a la base de datos PostgreSQL
+DATABASE_URL="postgresql://usuario:contraseña@localhost:5432/safenight_db?schema=public"
+
+# Clave secreta para firmar los JWT
+JWT_SECRET="clave_super_secreta_y_segura"
+JWT_EXPIRATION="7d"
+
+# Clave secreta para el Refresh Token
+REFRESH_TOKEN_SECRET="otra_clave_secreta"
+REFRESH_TOKEN_EXPIRATION="30d"
+```
+
+> **Importante:** Reemplaza `usuario`, `contraseña` y `safenight_db` con tus credenciales reales.
+
+### **4. Levantar la base de datos (Opcional con Docker)**
+
+Si usas Docker, puedes levantar una base de datos PostgreSQL con el siguiente comando:
+
+```bash
+docker-compose up -d
+```
+
+### **5. Ejecutar las migraciones de la base de datos**
+
+```bash
+npx prisma migrate deploy
+# o para aplicar las migraciones y regenerar el cliente de Prisma
+npx prisma migrate dev
+```
+
+### **6. Sembrar la base de datos (Opcional)**
+
+Para agregar datos de prueba iniciales, ejecuta:
+
+```bash
+npx prisma db seed
+```
+
+### **7. Iniciar la aplicación**
+
+*   **Modo Desarrollo (con Hot Reload):**
+    ```bash
+    npm run start:dev
+    ```
+*   **Modo Producción:**
+    ```bash
+    npm run build
+    npm run start:prod
+    ```
+
+La aplicación estará disponible en: `http://localhost:3000`
+
+---
+
+## 📚 Documentación de la API
+
+La documentación de la API se puede explorar mediante Swagger (si está implementado). Normalmente estará disponible en la ruta:
+
+> **`http://localhost:3000/api-docs`**
+
+### **Endpoints Principales**
+
+#### **Autenticación (`/auth`)**
+| Método | Ruta | Descripción |
+| :--- | :--- | :--- |
+| `POST` | `/auth/register` | Registrar un nuevo usuario |
+| `POST` | `/auth/login` | Iniciar sesión y obtener un token |
+| `POST` | `/auth/refresh` | Renovar el token de acceso |
+| `GET` | `/auth/me` | Obtener información del perfil del usuario autenticado |
+
+#### **Contactos Seguros (`/safe-contacts`)**
+| Método | Ruta | Descripción |
+| :--- | :--- | :--- |
+| `POST` | `/safe-contacts` | Crear un nuevo contacto seguro |
+| `GET` | `/safe-contacts` | Listar todos los contactos del usuario |
+| `GET` | `/safe-contacts/:id` | Obtener un contacto específico |
+| `PATCH` | `/safe-contacts/:id` | Actualizar un contacto |
+| `DELETE` | `/safe-contacts/:id` | Eliminar un contacto |
+
+#### **Modo Borracho (`/drunk-mode`)**
+| Método | Ruta | Descripción |
+| :--- | :--- | :--- |
+| `POST` | `/drunk-mode/activate` | Activar el modo de emergencia |
+| `POST` | `/drunk-mode/deactivate` | Desactivar el modo de emergencia |
+
+---
+
+## 🧪 Pruebas
+
+Para ejecutar las pruebas unitarias y E2E, usa:
+
+```bash
+# Pruebas unitarias
+npm run test
+
+# Pruebas E2E
+npm run test:e2e
+
+# Cobertura de código
+npm run test:cov
+```
+
+---
+
+## 🤝 Cómo Contribuir
+
+1.  Realiza un fork del proyecto.
+2.  Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3.  Realiza los cambios y haz commit de los mismos (`git commit -m 'Add: nueva funcionalidad'`).
+4.  Sube los cambios a tu repositorio (`git push origin feature/nueva-funcionalidad`).
+5.  Abre un Pull Request.
+
+---
+
+## 📜 Licencia
+
+[MIT](LICENSE)
+
+---
+
+### **Notas adicionales para los desarrolladores:**
+
+*   **Seguridad:** Nunca subas el archivo `.env` a tu repositorio. Asegúrate de que esté en el `.gitignore`.
+*   **Prisma:** Cuando modifiques `schema.prisma`, no olvides ejecutar `npx prisma generate` y crear una nueva migración con `npx prisma migrate dev --name nombre_de_la_migracion`.
+*   **Dependencias:** Revisa que `package.json` incluya todas las dependencias utilizadas en la estructura (`@nestjs/jwt`, `@nestjs/passport`, `passport-jwt`, `@prisma/client`, `bcrypt`, `class-validator`, etc.).
+EOF
+```
