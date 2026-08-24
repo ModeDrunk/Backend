@@ -1,7 +1,3 @@
-Aquí tienes el contenido completo del README en un formato listo para copiar y pegar directamente en tu archivo `README.md`:
-
-```bash
-cat > README.md << 'EOF'
 # SafeNight Backend
 
 ## Descripción
